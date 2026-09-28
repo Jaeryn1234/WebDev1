@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="bg-slate-100 min-h-screen flex flex-col">
+     <!-- Navigation Bar -->
+
+    <nav id ="navbar" class="bg-white shadow-md w-full">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo / App Name -->
+                <a href ="index.html" class="flex-shrink-0 font-bold text-xl text-blue-600">
+                    ConverterApp
+                </a>
+                
+                <!-- Navigation Links -->
+                <div class="flex space-x-4">
+                    <!-- Current Page (Weight) gets a blue background -->
+                    <a href="weight.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
+                        Weight
+                    </a>
+                    
+                    <!-- Other pages get hover effects -->
+                    <a href="distance.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
+                        Distance
+                    </a>
+                    
+                    <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium bg-blue-100 text-blue-700">
+                        Temperature
+                     </a>
+
+                  <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
+                      Home
+                  </a>  
+                      
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </nav>
+   
+  
+    <!-- Added: flex-1 flex items-center justify-center w-full moving the cards to middle -->
+    <main class="max-w-5xl mx-auto px-6 flex-1 flex items-center justify-center w-full">
+      <div class="flex justify-center gap-5">
+          <!--Form 3 celcius to fahrenheit-->
+          <div class="bg-white rounded-2xl shadow-md p-6"> 
+            <h3 class="text-lg font-bold text-slate-900">Temperature</h3>
+            <p class="text-sm text-slate-500 mt-1">Celsius (°C) to Fahrenheit (°F)</p>
+            <label for="celsius-input" class="block text-sm font-medium text-slate-700 mt-5 mb-2">
+              Celsius
+            </label>
+            <input
+            id="celsius-input"
+            type="text"
+            value="0"
+            class="w-full rounded-lg border border-slate-300 px-4 py-2 text-slate-900 
+            focus:border-blue-500 focus:outline-none"
+            />
+            <button
+            id="celsius-button"
+            class="full mt-4 rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white
+            hover:bg-blue-700 transition cursor-pointer"
+            >Converter
+            </button>
+            <div class="mt-5 rounded-lg bg-slate-50 p-4 text-center">
+              <p class="text-xs uppercase tracking-wide text-slate-500">Fahrenheit</p>
+              <p id="celsius-result" class="text-2xl font-bold text-blue-500 mt-1">0.00</p>
+            </div>
+          </div>
+
+          <!--Form 3 fahrenheit to celsius-->
+          <div class="bg-white rounded-2xl shadow-md p-6"> 
+            <h3 class="text-lg font-bold text-slate-900">Temperature</h3>
+            <p class="text-sm text-slate-500 mt-1">Fahrenheit (°F) to Celsius (°C)</p>
+            <label for="fahrenheit-input" class="block text-sm font-medium text-slate-700 mt-5 mb-2">
+              Fahrenheit
+            </label>
+            <input
+            id="fahrenheit-input"
+            type="text"
+            value="0"
+            class="w-full rounded-lg border border-slate-300 px-4 py-2 text-slate-900 
+            focus:border-blue-500 focus:outline-none"
+            />
+            <button
+            id="fahrenheit-button"
+            class="full mt-4 rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white
+            hover:bg-blue-700 transition cursor-pointer"
+            >Converter
+            </button>
+            <div class="mt-5 rounded-lg bg-slate-50 p-4 text-center">
+              <p class="text-xs uppercase tracking-wide text-slate-500">Celsius</p>
+              <p id="fahrenheit-result" class="text-2xl font-bold text-blue-500 mt-1">0.00</p>
+            </div>
+          </div>
+      </div>
+
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

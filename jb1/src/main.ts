@@ -1,60 +1,36 @@
-import './style.css'
-import heroImg from './assets/hero.png'
-import typescriptLogo from './assets/typescript.svg'
-import viteLogo from './assets/vite.svg'
-import { setupCounter } from './counter.ts'
+// 1. Core Conversions (Your math stays exactly the same)
+const kilogramsToPounds = (kilograms: number): number => kilograms * 2.20462;
+const poundsToKilograms = (pounds: number): number => pounds * 0.45359237;
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${typescriptLogo}" class="framework" alt="TypeScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.ts</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+const milesToKilometres = (miles: number): number => miles * 1.609344;
+const kilometresToMiles = (kilometres: number): number => kilometres * 0.62137119;
 
-<div class="ticks"></div>
+const celsiusToFahrenheit = (celsius: number): number => (celsius * 9/5) + 32;
+const fahrenheitToCelsius = (fahrenheit: number): number => (fahrenheit - 32) * 5/9;
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://www.typescriptlang.org" target="_blank">
-          <img class="button-icon" src="${typescriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
 
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
+// 2. Get HTML Elements
+const kgInput = document.getElementById("kg-input") as HTMLInputElement;
+const kgButton = document.getElementById("kg-button") as HTMLButtonElement;
+const kgResult = document.getElementById("kg-result") as HTMLParagraphElement;
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+const lbInput = document.getElementById("lb-input") as HTMLInputElement;
+const lbButton = document.getElementById("lb-button") as HTMLButtonElement;
+const lbResult = document.getElementById("lb-result") as HTMLParagraphElement;
+
+const milesInput = document.getElementById("miles-input") as HTMLInputElement;
+const milesButton= document.getElementById("miles-button") as HTMLButtonElement;
+const milesResult = document.getElementById("miles-result") as HTMLParagraphElement;
+
+const kilometresInput = document.getElementById("kilo-input") as HTMLInputElement;
+const kilometresButton = document.getElementById("kilo-button") as HTMLButtonElement;
+const kilometresResult = document.getElementById("kilo-result") as HTMLParagraphElement;
+
+const celsiusInput = document.getElementById("celsius-input") as HTMLInputElement;
+const celsiusButton = document.getElementById("celsius-button") as HTMLButtonElement;
+const celsiusResult = document.getElementById("celsius-result") as HTMLParagraphElement;
+
+const fahrenheitInput = document.getElementById("fahrenheit-input") as HTMLInputElement;
+const fahrenheitButton = document.getElementById("fahrenheit-button") as HTMLButtonElement;
+const fahrenheitResult = document.getElementById("fahrenheit-result") as HTMLParagraphElement;
+

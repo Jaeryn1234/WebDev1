@@ -1,136 +1,83 @@
+const createInput = (input: string, button: string, result: string): [HTMLInputElement, HTMLButtonElement, HTMLParagraphElement] => {
+    const inputCreated = document.getElementById(input) as HTMLInputElement;
+    const buttonCreated = document.getElementById(button) as HTMLButtonElement;
+    const resultCreated = document.getElementById(result) as HTMLParagraphElement;
+    return [inputCreated, buttonCreated, resultCreated];
+}
 
-const createConverter = (fromUnit: string, toUnit: string) => {
-    
-    // Returns the actual conversion arrow function
-    return (input: number | number[]): number | number[] => {
-        
-        // Define the math logic based on the units passed in
-        let convertLogic = (val: number): number => val; // fallback
+const [kgInput, kgButton, kgResult] = createInput("kg-input", "kg-button", "kg-result");
+const [lbInput, lbButton, lbResult] = createInput("lb-input", "lb-button", "lb-result");
+const [milesInput, milesButton, milesResult] = createInput("miles-input", "miles-button", "miles-result");
+const [kilometresInput, kilometresButton, kilometresResult] = createInput("kilometres-input", "kilometres-button", "kilometres-result");
+const [celsiusInput, celsiusButton, celsiusResult] = createInput("celsius-input", "celsius-button", "celsius-result");
+const [fahrenheitInput, fahrenheitButton, fahrenheitResult] = createInput("fahrenheit-input", "fahrenheit-button", "fahrenheit-result");
 
-        if (fromUnit === "kg" && toUnit === "lb") {
-            convertLogic = (val) => val * 2.20462;
-        } else if (fromUnit === "lb" && toUnit === "kg") {
-            convertLogic = (val) => val * 0.45359237;
-        } else if (fromUnit === "miles" && toUnit === "km") {
-            convertLogic = (val) => val * 1.609344;
-        } else if (fromUnit === "km" && toUnit === "miles") {
-            convertLogic = (val) => val * 0.62137119;
-        } else if (fromUnit === "celsius" && toUnit === "fahrenheit") {
-            convertLogic = (val) => (val * 9/5) + 32;
-        } else if (fromUnit === "fahrenheit" && toUnit === "celsius") {
-            convertLogic = (val) => (val - 32) * 5/9;
-        }
-
-     
-        if (Array.isArray(input)) {
-            return input.map(convertLogic);
-        } else {
-            return convertLogic(input);
+//convert from = cf and convert dont shto = ct
+const convert = (cf: string, ct: string) => {
+    return(num: number | number[]) => {
+        const solve = (n: number): number => { //got this line from chatgpt because initially i put solve below the if statement
+            if(cf === "lb" && ct === "kg"){
+                return n * 0.45359237;
+            } else if (cf === "kg" && ct === "lb"){
+                return n * 2.20462;
+            } else if (cf === "miles" && ct === "kilometres"){
+                return n * 1.609344;
+            } else if (cf === "kilometres" && ct === "miles"){
+                return n * 0.62137119;
+            } else if (cf === "celsius" && ct === "fahrenheit"){
+                return (n * 9/5) + 32;
+            } else if (cf === "fahrenheit" && ct === "celsius"){
+                return (n - 32) * 5/9;
+            }else{
+                return 0;
+            }
+        };
+            
+        //return solved values
+        if (typeof num === 'number'){//https://www.geeksforgeeks.org/javascript/how-to-check-if-a-value-is-a-number-in-javascript/
+            return solve(num);
+        } else if (num.constructor === Array){ //https://stackoverflow.com/questions/767486/how-do-i-check-if-a-variable-is-an-array-in-javascript
+            return num.map((x) => solve(x)); 
         }
     };
 };
 
-//conversions
-    //weight
-    const kilogramsToPounds = (kilograms: number): number => kilograms * 2.20462;
-    const poundsToKilograms = (pounds: number): number => pounds * 0.45359237;
 
-    //distance
-    const milesToKilometres = (miles: number): number => miles * 1.609344;
-    const kilometresToMiles = (kilometres: number): number => kilometres * 0.62137119;
+const isArray = (input: HTMLInputElement): number[] | number=> {
+    if(input.value.includes(",")){
+        const myArray = input.value.split(",");
+        const arrayConvertNumber = myArray.map((x) => Number(x));
+        return arrayConvertNumber;
+    }
+    const inputConvertNumber = Number(input.value);;
+    return inputConvertNumber;
+};
 
-    //temperature
-    const celsiusToFahrenheit = (celsius: number): number => (celsius* 9/5) + 32;
-    const fahrenheitToCelsius = (fahrenheit: number): number => (fahrenheit - 32) * 5/9;
-
-//get id
-    // get kg
-    const kgInput = document.getElementById("kg-input") as HTMLInputElement;
-    const kgButton = document.getElementById("kg-button") as HTMLButtonElement;
-    const kgResult = document.getElementById("kg-result") as HTMLParagraphElement;
-
-    //get lb
-    const lbInput = document.getElementById("lb-input") as HTMLInputElement;
-    const lbButton = document.getElementById("lb-button") as HTMLButtonElement;
-    const lbResult = document.getElementById("lb-result") as HTMLParagraphElement;
-
-    //get miles
-    const milesInput = document.getElementById("miles-input") as HTMLInputElement;
-    const milesButton= document.getElementById("miles-button") as HTMLButtonElement;
-    const milesResult = document.getElementById("miles-result") as HTMLParagraphElement;
-
-    //get kilometres
-    const kilometresInput = document.getElementById("kilo-input") as HTMLInputElement;
-    const kilometresButton = document.getElementById("kilo-button") as HTMLButtonElement;
-    const kilometresResult = document.getElementById("kilo-result") as HTMLParagraphElement;
-
-    //get celsius
-    const celsiusInput = document.getElementById("celsius-input") as HTMLInputElement;
-    const celsiusButton = document.getElementById("celsius-button") as HTMLButtonElement;
-    const celsiusResult = document.getElementById("celsius-result") as HTMLParagraphElement;
-
-    //get fahrenheit
-    const fahrenheitInput = document.getElementById("fahrenheit-input") as HTMLInputElement;
-    const fahrenheitButton = document.getElementById("fahrenheit-button") as HTMLButtonElement;
-    const fahrenheitResult = document.getElementById("fahrenheit-result") as HTMLParagraphElement;
-
-
-// 3. Helper to connect HTML Strings to the Higher-Order Function
-// This takes what the user typed, turns it into a number (or array of numbers),
-// feeds it to the converter, and formats the output string.
-const processInput = (inputValue: string, converterFunc: (val: number | number[]) => number | number[]): string => {
-    if (inputValue.includes(",")) {
-        // It's a list: Convert string to array of numbers
-        const stringArray = inputValue.split(",");
-        const numberArray = stringArray.map(item => Number(item.trim()));
+const buttonPress = (button: HTMLButtonElement, input: HTMLInputElement, result: HTMLParagraphElement, cf:string, ct: string): void =>{
+    const handleConvert = (): void => {
+        const runConvert = convert(cf, ct); //outer
         
-        // Feed array to your generated function
-        const resultArray = converterFunc(numberArray) as number[];
-        
-        // Format to 2 decimal places and return as string
-        return resultArray.map(res => res.toFixed(2)).join(", ");
-    } else {
-        // It's a single value
-        const singleNumber = Number(inputValue.trim());
-        const result = converterFunc(singleNumber) as number;
-        return result.toFixed(2);
+        const inputConvertNumber = isArray(input);
+
+        const total = runConvert(inputConvertNumber); //inner
+
+        if(typeof total === "number"){
+            result.textContent = total.toFixed(2); //fix only exists on number not array
+        } else{
+            result.textContent = total.map((x) => x.toFixed(2)).join(", "); //.join chatgpt because it says textContent requires a string
+        }
+    };
+
+    if(button){
+        button.addEventListener("click", handleConvert);
     }
 };
 
+buttonPress(lbButton, lbInput, lbResult, "lb", "kg");
+buttonPress(kgButton, kgInput, kgResult,"kg", "lb");
 
-// 4. Calculate & Event Listeners
-if (kgButton) {
-    kgButton.addEventListener("click", () => {
-        kgResult.textContent = processInput(kgInput.value, kilogramsToPounds);
-    });
-}
- 
-if (lbButton) {
-    lbButton.addEventListener("click", () => {
-        lbResult.textContent = processInput(lbInput.value, poundsToKilograms);
-    });
-}
- 
-if (milesButton) {
-    milesButton.addEventListener("click", () => {
-        milesResult.textContent = processInput(milesInput.value, milesToKilometres);
-    });
-}
- 
-if (kilometresButton) {
-    kilometresButton.addEventListener("click", () => {
-        kilometresResult.textContent = processInput(kilometresInput.value, kilometresToMiles);
-    });
-}
- 
-if (celsiusButton) {
-    celsiusButton.addEventListener("click", () => {
-        celsiusResult.textContent = processInput(celsiusInput.value, celsiusToFahrenheit);
-    });
-}
- 
-if (fahrenheitButton) {
-    fahrenheitButton.addEventListener("click", () => {
-        fahrenheitResult.textContent = processInput(fahrenheitInput.value, fahrenheitToCelsius);
-    });
-}
+buttonPress(milesButton, milesInput, milesResult, "miles", "kilometres");
+buttonPress(kilometresButton, kilometresInput, kilometresResult, "kilometres", "miles");
+
+buttonPress(celsiusButton, celsiusInput, celsiusResult, "celsius", "fahrenheit");
+buttonPress(fahrenheitButton, fahrenheitInput, fahrenheitResult, "fahrenheit", "celsius");

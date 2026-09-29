@@ -1,3 +1,15 @@
+/*
+Jaeryn Franco and Bao Nguyen: Sep 28, Web Dev 2 CPRG-306-C
+This project is meant to perform unit conversions. Pounds, kilograms, 
+miles to kilometres, celsius to fahrenheit and vice versa. It uses high 
+order javascript functions and the website includes a navbar with: weight,
+distance, and temperature. Each tab has a form to convert between metric unit
+and imperial unit. Can convert a single value and an array. Uses Tailwind CSS 
+and Javascript
+*/
+
+
+
 const createInput = (input: string, button: string, result: string): [HTMLInputElement, HTMLButtonElement, HTMLParagraphElement] => {
     const inputCreated = document.getElementById(input) as HTMLInputElement;
     const buttonCreated = document.getElementById(button) as HTMLButtonElement;

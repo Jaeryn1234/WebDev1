@@ -9,42 +9,39 @@
   </head>
   <body class="bg-slate-100 min-h-screen flex flex-col">
     <script type="module" src="/src/main.ts"></script>
-
-<!--navbar is similar throughout all html-->
-
-    <!-- Navigation Bar -->
-<nav id="navbar" class="bg-white shadow-md w-full">
-    <div class="max-w-5xl mx-auto px-6">
-        <div class="flex items-center justify-between h-16">
-            <!-- Logo / App Name -->
-            <div class="flex-shrink-0 font-bold text-xl text-blue-600">
-                ConverterApp
+        <!--navbar is similar throughout all html-->
+        <!-- Navigation Bar -->
+        <nav id="navbar" class="bg-white shadow-md w-full">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="flex items-center justify-between h-16">
+                    <!-- Logo / App Name -->
+                    <div class="flex-shrink-0 font-bold text-xl text-blue-600">
+                        ConverterApp
+                    </div>
+                    
+                    <!-- Navigation Links -->
+                    <div class="flex space-x-4">
+                        <!-- Current Page (Weight) gets a blue background -->
+                        <a href="weight.html" class ="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
+                            Weight
+                        </a>
+                        
+                        <!-- Other pages get hover effects -->
+                        <a href="distance.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
+                            Distance
+                        </a>
+                        
+                        <a href="temperature.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
+                            Temperature
+                        </a>
+                    </div>
+                </div>
             </div>
-            
-            <!-- Navigation Links -->
-            <div class="flex space-x-4">
-                <!-- Current Page (Weight) gets a blue background -->
-                <a href="weight.html" class ="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
-                    Weight
-                </a>
-                
-                <!-- Other pages get hover effects -->
-                <a href="distance.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
-                    Distance
-                </a>
-                
-                <a href="temperature.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition">
-                    Temperature
-                </a>
-            </div>
-        </div>
-    </div>
-</nav>
-
+        </nav>
 <!--welcome message you see as soon as you open the website-->
 <main class="max-w-5xl mx-auto px-6 flex-1 flex items-center justify-center w-full" >
-  <div class = "text-4xl font-bold text-blue-600"> Welcome to the ConverterApp</div>
+  <div class = "text-4xl font-bold text-blue-600"> Welcome to ConverterApp</div>
 </main>
-    <script type="module" src="/dist/main.js"></script>
+
   </body>
 </html>

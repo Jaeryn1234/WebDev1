@@ -8,7 +8,6 @@
 </head>
 <body class="bg-slate-100 min-h-screen flex flex-col">
  
-    
     <!-- Navigation Bar -->
     <nav id="navbar" class="bg-white shadow-md w-full">
         <div class="max-w-5xl mx-auto px-6">
@@ -47,7 +46,7 @@
     <main class="max-w-5xl mx-auto px-6 flex-1 flex items-center justify-center w-full">
       <div class="flex justify-center gap-5">
           <!--Form 2 miles to kilometres-->
-          <div class="bg-white w-full max-w-md rounded-2xl shadow-md p-6">
+          <div class="bg-white rounded-2xl shadow-md p-6">
             <h3 class="text-lg font-bold text-slate-900">Miles to kilometres (km)</h3>
             <label for="miles-input" class="block text-sm font-medium text-slate-700 mt-5 mb-2">
               Miles
@@ -61,7 +60,6 @@
             />
             <button
             id="miles-button"
-            type="button"
             class="w-full mt-4 rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white
             hover:bg-blue-700 transition cursor-pointer"
             >Converter
@@ -75,7 +73,7 @@
  
  
           <!--Form 2 kilometres to miles-->
-          <div class="bg-white w-full max-w-md rounded-2xl shadow-md p-6">
+          <div class="bg-white rounded-2xl shadow-md p-6">
             <h3 class="text-lg font-bold text-slate-900">Kilometres (km) to miles</h3>
             <label for="kilo-input" class="block text-sm font-medium text-slate-700 mt-5 mb-2">
               Kilometres
@@ -89,7 +87,6 @@
             />
             <button
             id="kilo-button"
-            type="button"
             class="w-full mt-4 rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white
             hover:bg-blue-700 transition cursor-pointer"
             >Converter
@@ -101,6 +98,6 @@
           </div>
       </div>
     </main>
-    <script type="module" src="/dist/main.js"></script>
+    <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

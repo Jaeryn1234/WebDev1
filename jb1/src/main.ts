@@ -1,32 +1,16 @@
-    const kgInput = document.getElementById("kg-input") as HTMLInputElement;
-    const kgButton = document.getElementById("kg-button") as HTMLButtonElement;
-    const kgResult = document.getElementById("kg-result") as HTMLParagraphElement;
+const createInput = (input: string, button: string, result: string): [HTMLInputElement, HTMLButtonElement, HTMLParagraphElement] => {
+    const inputCreated = document.getElementById(input) as HTMLInputElement;
+    const buttonCreated = document.getElementById(button) as HTMLButtonElement;
+    const resultCreated = document.getElementById(result) as HTMLParagraphElement;
+    return [inputCreated, buttonCreated, resultCreated];
+}
 
-    //get lb
-    const lbInput = document.getElementById("lb-input") as HTMLInputElement;
-    const lbButton = document.getElementById("lb-button") as HTMLButtonElement;
-    const lbResult = document.getElementById("lb-result") as HTMLParagraphElement;
-
-    //get miles
-    const milesInput = document.getElementById("miles-input") as HTMLInputElement;
-    const milesButton= document.getElementById("miles-button") as HTMLButtonElement;
-    const milesResult = document.getElementById("miles-result") as HTMLParagraphElement;
-
-    //get kilometres
-    const kilometresInput = document.getElementById("kilo-input") as HTMLInputElement;
-    const kilometresButton = document.getElementById("kilo-button") as HTMLButtonElement;
-    const kilometresResult = document.getElementById("kilo-result") as HTMLParagraphElement;
-
-    //get celsius
-    const celsiusInput = document.getElementById("celsius-input") as HTMLInputElement;
-    const celsiusButton = document.getElementById("celsius-button") as HTMLButtonElement;
-    const celsiusResult = document.getElementById("celsius-result") as HTMLParagraphElement;
-
-    //get fahrenheit
-    const fahrenheitInput = document.getElementById("fahrenheit-input") as HTMLInputElement;
-    const fahrenheitButton = document.getElementById("fahrenheit-button") as HTMLButtonElement;
-    const fahrenheitResult = document.getElementById("fahrenheit-result") as HTMLParagraphElement;
-
+const [kgInput, kgButton, kgResult] = createInput("kg-input", "kg-button", "kg-result");
+const [lbInput, lbButton, lbResult] = createInput("lb-input", "lb-button", "lb-result");
+const [milesInput, milesButton, milesResult] = createInput("miles-input", "miles-button", "miles-result");
+const [kilometresInput, kilometresButton, kilometresResult] = createInput("kilometres-input", "kilometres-button", "kilometres-result");
+const [celsiusInput, celsiusButton, celsiusResult] = createInput("celsius-input", "celsius-button", "celsius-result");
+const [fahrenheitInput, fahrenheitButton, fahrenheitResult] = createInput("fahrenheit-input", "fahrenheit-button", "fahrenheit-result");
 
 //convert from = cf and convert dont shto = ct
 const convert = (cf: string, ct: string) => {

@@ -39,7 +39,7 @@ const createElement = (input: string, button: string, result: string): [HTMLInpu
 const [kgInput, kgButton, kgResult] = createElement("kg-input", "kg-button", "kg-result");
 const [lbInput, lbButton, lbResult] = createElement("lb-input", "lb-button", "lb-result");
 const [milesInput, milesButton, milesResult] = createElement("miles-input", "miles-button", "miles-result");
-const [kilometresInput, kilometresButton, kilometresResult] = createElement("kilometres-input", "kilometres-button", "kilometres-result");
+const [kilometresInput, kilometresButton, kilometresResult] = createElement("kilom-input", "kilo-button", "kilo-result");
 const [celsiusInput, celsiusButton, celsiusResult] = createElement("celsius-input", "celsius-button", "celsius-result");
 const [fahrenheitInput, fahrenheitButton, fahrenheitResult] = createElement("fahrenheit-input", "fahrenheit-button", "fahrenheit-result");
 
